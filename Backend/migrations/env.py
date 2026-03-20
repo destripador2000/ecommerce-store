@@ -11,7 +11,7 @@ import sys
 from sqlmodel import SQLModel
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
-from config import settings
+from core.config import settings
 from database.db import Base
 from models.md_Inventary import Inventary
 from models.md_Product import Product
