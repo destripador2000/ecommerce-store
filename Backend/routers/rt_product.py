@@ -1,5 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
+from typing import List
+from sqlalchemy import select
 
 from database.db import get_db
 from models.md_Product import Product as db_Product
@@ -29,3 +31,12 @@ async def create_product(product: Product,
             await conex.rollback()
             logger.error(f"ERROR: {e}")
             raise HTTPException(status_code=400, detail= "Error en la petición, intente más tarde")
+
+# * API  para leer producto
+@router.get("/", response_model= List[Product])
+async def read_product(conex: AsyncSession = Depends(get_db)):
+    stmt = select(db_Product)
+    result = await conex.execute(stmt)
+    products = result.scalars().all()
+
+    return products
