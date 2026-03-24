@@ -4,3 +4,4 @@ from .md_Supplier import Supplier
 from .md_Inventary import Inventary
 from .md_Promotion import Promotion
 from .md_Request import Request
+from .md_Request_Detail import RequestDetail
