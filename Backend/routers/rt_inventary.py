@@ -7,6 +7,7 @@ from database.db import get_db
 from models.md_Inventary import Inventary as db_Inventary
 from core.logging_config import logger
 from schemas.sc_Inventary import Inventary
+from schemas.sc_Inventary import updateInventary as scUpdate
 
 router = APIRouter()
 
@@ -45,27 +46,29 @@ async def read_inventary(skip: int = 0,
     return inventaryRead
 
 # * API para modificar inventario (stocks)
-@router.patch("/")
+@router.patch("/{idInventary}")
 async def update_intenvary(idInventary: int,
-                            mdInventary: Inventary,
+                             mdInventary: scUpdate,
                             conex: AsyncSession = Depends(get_db)):
+
+    stmt = select(db_Inventary)
     
     try:
         if idInventary is not None:
-            stmt = select(col(db_Inventary.id) == idInventary)
+            stmt = stmt.where(db_Inventary.id == idInventary)
         
         result = await conex.execute(stmt)
         inventary = result.scalars().first()
-        mdInventary.model_dump()
+        update_data = mdInventary.model_dump(exclude_unset=True)
 
-        for llave, valor in mdInventary:
-            setattr(db_Inventary.id, llave, valor)
+        for llave, valor in update_data.items():
+            setattr(inventary, llave, valor)
 
         await conex.commit()
-        await conex.refresh()
+        await conex.refresh(inventary)
 
     except Exception as e:
-        await  conex.rollback()
+        await conex.rollback()
         logger.error(f"ERROR: {e}")
         raise HTTPException(status_code=404, detail="Inventario inexistente")
     
