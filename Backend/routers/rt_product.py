@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
-from typing import List
 from sqlalchemy import select
 from sqlmodel import col
+from typing import List
 
 from database.db import get_db
 from models.md_Product import Product as db_Product
@@ -46,38 +46,33 @@ async def create_product(product: Product,
         raise HTTPException(status_code=400, detail="Error de registro")
 
 
-# * API  para leer producto
-@router.get("/", response_model=List[Product])
-async def read_product(conex: AsyncSession = Depends(get_db)):
+# * API para leer producto
+@router.get("/")
+async def read_product(skip: int = 0,
+                       limit: int = 100,
+                       idProduct: int | None = None,
+                       basePrice: float | None = None,
+                       conex: AsyncSession = Depends(get_db)):
 
     try:
         stmt = select(db_Product)
+
+        if idProduct is not None:
+            stmt = stmt.where(col(db_Product.id) == idProduct)
+
+        if basePrice is not None:
+            stmt = stmt.where(col(db_Product.basePrice) == basePrice)
+
+        stmt = stmt.offset(skip).limit(limit)
         result = await conex.execute(stmt)
-        products = result.scalars().all()
-    except Exception as e:
-        await conex.rollback()
-        logger.error(f"ERROR: {e}")
-        raise HTTPException(status_code=404, detail="Producto no encontrado")
-
-    return products
-
-
-# * API para leer producto por id
-@router.get("/", response_model=List[Product])
-async def read_product_by_id(product_id: int,
-                             conex: AsyncSession = Depends(get_db)):
-
-    try:
-        stmt = select(db_Product).where(col(db_Product.id == product_id))
-        result = await conex.execute(stmt)
-        product = result.scalars().first()
+        producRead = result.scalars().all()
 
     except Exception as e:
         await conex.rollback()
         logger.error(f"ERROR: {e}")
-        raise HTTPException(status_code=404, detail="Producto no encontrado")
+        raise HTTPException(status_code=500, detail="Error en la petición")
 
-    return product
+    return producRead
 
 
 # API para actualizar producto
