@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Sign-In Clone</title>
+  <link rel="stylesheet" href=".../src/login_client.html">
+  <link rel="stylesheet" href="../styles/login_client.css">
+  <script type="module" src="../actions/login_client.ts"></script>
+</head>
+
+<body>
+  <button class="theme-toggle-btn" id="theme-toggle">Modo Oscuro</button>
+
+  <div class="amz-login-wrapper">
+    <div class="amz-logo-container">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon" class="amz-logo">
+    </div>
+
+    <div class="amz-login-card">
+      <h1>Inicia sesión o crea una cuenta</h1>
+
+      <form id="login-form">
+        <label for="email">Introduce el número de teléfono móvil o el correo electrónico</label>
+        <input type="text" id="email" class="amz-input" required>
+
+        <button type="submit" class="amz-btn-primary">Continuar</button>
+      </form>
+
+      <p class="amz-legal-text">
+        Al continuar, aceptas las <a href="#">Condiciones de uso</a> y el <a href="#">Aviso de privacidad</a> de Amazon.
+      </p>
+
+      <div class="amz-help-section">
+        <a href="#">¿Necesitas ayuda?</a>
+      </div>
+
+      <div class="amz-divider"></div>
+
+      <div class="amz-business-section">
+        <h4>¿Estás comprando para tu empresa?</h4>
+        <a href="#">Crea una cuenta de Amazon Business gratis</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="amz-footer">
+    <div class="amz-footer-divider"></div>
+    <div class="amz-footer-links">
+      <a href="#">Condiciones de uso</a>
+      <a href="#">Aviso de privacidad</a>
+      <a href="#">Ayuda</a>
+    </div>
+    <p class="amz-copyright">© 1996-2026, Amazon.com, Inc. o afiliados</p>
+  </footer>
+</body>
+
+</html>
