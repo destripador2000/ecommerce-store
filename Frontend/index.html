@@ -1,13 +1,290 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>frontend</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Amazon Clone</title>
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+
+<body>
+  <header>
+    <div class="nav-top">
+      <div class="nav-logo">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+      </div>
+
+      <div class="nav-location" style="display:flex; align-items:center; gap:5px; font-size:13px;">
+        <span>📍</span>
+        <div>
+          <div style="color: #ccc;">Deliver to</div>
+          <div style="font-weight:bold;">Location</div>
+        </div>
+      </div>
+
+      <div class="nav-search">
+        <select>
+          <option>All</option>
+        </select>
+        <input type="text" placeholder="Search Amazon">
+        <button type="submit">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 103 10.5a7.5 7.5 0 0013.65 6.15z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="nav-tools">
+        <div>
+          <div style="color: #ccc;">Hello, Sign in</div>
+          <div style="font-weight:bold;">Account</div>
+        </div>
+        <div>
+          <div style="color: #ccc;">Returns</div>
+          <div style="font-weight:bold;">& Orders</div>
+        </div>
+
+        <button id="theme-toggle" class="theme-switch" aria-label="Cambiar tema">
+          <svg class="icon-moon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+          </svg>
+          <svg class="icon-sun" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+            </path>
+          </svg>
+        </button>
+
+        <div style="display:flex; align-items:center; gap:5px; font-weight:bold;">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+            </path>
+          </svg>
+          Cart
+        </div>
+      </div>
+
+      <div class="nav-bottom">
+        <a href="#" style="font-weight:bold;">☰ All</a>
+        <a href="#">Today's Deals</a>
+        <a href="#">Customer Service</a>
+        <a href="#">Gift Cards</a>
+        <a href="#">Registry</a>
+        <a href="#">Sell</a>
+      </div>
+  </header>
+
+  <main>
+    <section class="hero-section">
+      <div class="hero-banner">
+        <span
+          style="background:rgba(255,255,255,0.2); padding:4px 12px; border-radius:20px; font-size:0.8rem; width:fit-content; margin-bottom:15px;">LIMITED
+          TIME OFFER</span>
+        <h1>Refined Luxury Everyday.</h1>
+        <p>Discover the new editorial collection. Curated essentials designed for the modern home and lifestyle.</p>
+      </div>
+
+      <div class="hero-cards-container">
+        <div class="bento-card" style="grid-column: span 1;">
+          <h3>Editor's Choice</h3>
+          <p style="font-size: 0.9rem; color: var(--text-secondary);">Handpicked favorites for your sanctuary.</p>
+          <div class="bento-grid-inner">
+            <div>
+              <img src="https://images.unsplash.com/photo-1615529328331-f8917597711f?auto=format&fit=crop&w=300&q=80"
+                alt="Decor" class="bento-img-placeholder">
+              <p style="font-weight:bold; font-size:0.9rem; margin-top:10px;">Decor</p>
+            </div>
+            <div>
+              <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=300&q=80"
+                alt="Wellness" class="bento-img-placeholder">
+              <p style="font-weight:bold; font-size:0.9rem; margin-top:10px;">Wellness</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bento-card">
+          <h3>Tech Refresh</h3>
+          <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=300&q=80"
+            alt="Tech" class="bento-img-placeholder" style="height: 200px; margin-top: 15px;">
+          <a href="#" style="display:block; margin-top:15px; font-weight:bold; color:var(--amz-orange);">Shop Tech →</a>
+        </div>
+
+        <div class="bento-card dark-card">
+          <span style="font-size:0.7rem; color:var(--amz-orange); font-weight:bold;">PREMIUM</span>
+          <h3 style="font-size: 1.5rem; font-style: italic;">Kindle Scribe</h3>
+          <p style="font-size: 0.9rem; color:#ccc; margin-top:10px; margin-bottom: 30px;">The first Kindle for reading
+            and writing. Like writing on paper.</p>
+          <button
+            style="width:100%; padding:12px; border:none; border-radius:6px; background:var(--amz-orange); font-weight:bold; cursor:pointer;">Learn
+            More</button>
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title">Discover Categories</h2>
+    <div class="categories-container">
+      <div class="category-icon-card">
+        <span style="font-size: 24px;">🗄️</span>
+        <span>Home & Kitchen</span>
+      </div>
+      <div class="category-icon-card">
+        <span style="font-size: 24px;">💻</span>
+        <span>Electronics</span>
+      </div>
+      <div class="category-icon-card">
+        <span style="font-size: 24px;">👕</span>
+        <span>Fashion</span>
+      </div>
+      <div class="category-icon-card">
+        <span style="font-size: 24px;">✨</span>
+        <span>Beauty</span>
+      </div>
+      <div class="category-icon-card">
+        <span style="font-size: 24px;">🎾</span>
+        <span>Sports</span>
+      </div>
+      <div class="category-icon-card">
+        <span style="font-size: 24px;">📚</span>
+        <span>Books</span>
+      </div>
+      <div class="category-icon-card">
+        <span style="font-size: 24px;">🧸</span>
+        <span>Toys</span>
+      </div>
+    </div>
+
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; padding-right:5%;">
+      <h2 class="section-title" style="padding-bottom:10px;">
+        <span
+          style="display:block; font-size:0.7rem; color:var(--amz-orange); text-transform:uppercase; letter-spacing:1px; margin-bottom:5px;">TODAY'S
+          SELECTION</span>
+        Featured Deals
+      </h2>
+      <a href="#" style="font-weight:600; text-decoration:underline; font-size:0.9rem; margin-bottom:15px;">View all
+        deals</a>
+    </div>
+
+    <section class="products-grid">
+      <article class="product-card">
+        <span class="product-badge">20% OFF</span>
+        <div class="product-img-container">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=300&q=80"
+            alt="Headphones">
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Acoustic Pro Headphones</h3>
+          <div class="product-price-row">
+            <span class="price-current">$299.00</span>
+            <span class="price-old">$375.00</span>
+          </div>
+          <div class="product-actions">
+            <button class="btn-add-cart">Add to Cart</button>
+            <button class="btn-icon">♥</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <span class="product-badge" style="background:#fef3c7; color:#d97706;">NEW ARRIVAL</span>
+        <div class="product-img-container">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=300&q=80"
+            alt="Watch">
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Lunar Series Watch</h3>
+          <div class="product-price-row">
+            <span class="price-current">$185.00</span>
+          </div>
+          <div class="product-actions">
+            <button class="btn-add-cart">Add to Cart</button>
+            <button class="btn-icon">♥</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-img-container">
+          <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=300&q=80"
+            alt="Camera">
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Classic Instant Cam</h3>
+          <div class="product-price-row">
+            <span class="price-current">$99.00</span>
+            <span class="price-old">$129.00</span>
+          </div>
+          <div class="product-actions">
+            <button class="btn-add-cart">Add to Cart</button>
+            <button class="btn-icon">♥</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="product-card">
+        <div class="product-img-container">
+          <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=300&q=80"
+            alt="Tablet">
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Tab Ultra 12"</h3>
+          <div class="product-price-row">
+            <span class="price-current">$749.00</span>
+          </div>
+          <div class="product-actions">
+            <button class="btn-add-cart">Add to Cart</button>
+            <button class="btn-icon">♥</button>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Get to Know Us</h4>
+        <a href="#">Careers</a>
+        <a href="#">Blog</a>
+        <a href="#">About Amazon</a>
+        <a href="#">Investor Relations</a>
+      </div>
+      <div class="footer-col">
+        <h4>Make Money with Us</h4>
+        <a href="#">Sell on Amazon</a>
+        <a href="#">Sell on Amazon Business</a>
+        <a href="#">Become an Affiliate</a>
+        <a href="#">Advertise Your Products</a>
+      </div>
+      <div class="footer-col">
+        <h4>Amazon Payment Products</h4>
+        <a href="#">Amazon Business Card</a>
+        <a href="#">Shop with Points</a>
+        <a href="#">Reload Your Balance</a>
+        <a href="#">Amazon Currency Converter</a>
+      </div>
+      <div class="footer-col">
+        <h4>Let Us Help You</h4>
+        <a href="#">Amazon and COVID-19</a>
+        <a href="#">Your Account</a>
+        <a href="#">Your Orders</a>
+        <a href="#">Shipping Rates & Policies</a>
+      </div>
+    </div>
+    <div style="text-align:center; font-size:0.8rem; border-top:1px solid #333; padding-top:20px;">
+      <p>Conditions of Use &nbsp; Privacy Notice &nbsp; Your Ads Privacy Choices</p>
+      <p style="margin-top:10px; color:#666;">© 1996-2026, Amazon.com, Inc. or its affiliates</p>
+    </div>
+  </footer>
+  <script>
+    document.getElementById('theme-toggle').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
+
+
+</body>
+
 </html>
