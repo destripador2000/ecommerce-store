@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Modern Amazon Clone</title>
   <link rel="stylesheet" href="./src/style.css">
+  <script type='module' src='/src/main.ts'></script>
 </head>
 
 <body>
   <header>
     <div class="nav-top">
       <div class="nav-logo">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon">
+        <img src="/logo2.png" alt="Amazon">
       </div>
 
       <div class="nav-location" style="display:flex; align-items:center; gap:5px; font-size:13px;">
@@ -45,7 +46,6 @@
           <div style="color: #ccc;">Returns</div>
           <div style="font-weight:bold;">& Orders</div>
         </div>
-
         <button id="theme-toggle" class="theme-switch" aria-label="Cambiar tema">
           <svg class="icon-moon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
@@ -56,7 +56,6 @@
             </path>
           </svg>
         </button>
-
         <div style="display:flex; align-items:center; gap:5px; font-weight:bold;">
           <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -275,7 +274,7 @@
     </div>
     <div style="text-align:center; font-size:0.8rem; border-top:1px solid #333; padding-top:20px;">
       <p>Conditions of Use &nbsp; Privacy Notice &nbsp; Your Ads Privacy Choices</p>
-      <p style="margin-top:10px; color:#666;">© 1996-2026, Amazon.com, Inc. or its affiliates</p>
+      <p style="margin-top:10px; color:#666;">© 1996-2026, AmazonClone.com, Inc. or its affiliates</p>
     </div>
   </footer>
   <script>
@@ -283,8 +282,6 @@
       document.body.classList.toggle('dark-mode');
     });
   </script>
-
-
 </body>
 
 </html>
