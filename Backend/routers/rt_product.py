@@ -3,6 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 from sqlmodel import col
 from typing import List
+from sqlalchemy.orm import joinedload
 
 from database.db import get_db
 from models.md_Product import Product as db_Product
@@ -10,6 +11,7 @@ from models.md_Inventary import Inventary as db_Inventary
 from core.logging_config import logger
 from schemas.sc_Product import Product
 from schemas.sc_Product import UpdateProduct
+from schemas.sc_Product import ProductWithSupplier
 from schemas.sc_Inventary import Inventary
 
 # * Inicializando router
@@ -47,21 +49,25 @@ async def create_product(product: Product,
 
 
 # * API para leer producto
-@router.get("/")
+@router.get("/", response_model=List[ProductWithSupplier])
 async def read_product(skip: int = 0,
                        limit: int = 100,
                        idProduct: int | None = None,
                        basePrice: float | None = None,
+                       idSupplier: int | None = None,
                        conex: AsyncSession = Depends(get_db)):
 
     try:
-        stmt = select(db_Product)
+        stmt = select(db_Product).options(joinedload(db_Product.supplier))
 
         if idProduct is not None:
             stmt = stmt.where(col(db_Product.id) == idProduct)
 
         if basePrice is not None:
             stmt = stmt.where(col(db_Product.basePrice) == basePrice)
+
+        if idSupplier is not None:
+            stmt = stmt.where(col(db_Product.supplierID) == idSupplier)
 
         stmt = stmt.offset(skip).limit(limit)
         result = await conex.execute(stmt)
