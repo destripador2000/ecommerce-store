@@ -249,103 +249,146 @@ header {
 /* =========================================
    GRILLA DE PRODUCTOS (Featured Deals)
 ========================================= */
+/* =========================================
+   GRILLA DE PRODUCTOS MODERNA (Refactorizada)
+========================================= */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 24px;
+  gap: 30px;
+  /* Un poco más de espacio entre tarjetas */
   padding: 0 5% 60px;
 }
 
 .product-card {
   background-color: var(--card-bg);
-  border-radius: 12px;
+  border-radius: 16px;
+  /* Bordes más suaves */
   border: 1px solid var(--border-color);
   overflow: hidden;
-  transition: box-shadow 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  /* Alineación vertical interna */
+  height: 100%;
+  /* Para que todas midan lo mismo en la fila */
 }
 
 .product-card:hover {
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
 }
 
-.product-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background-color: var(--badge-bg);
-  color: var(--badge-text);
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  z-index: 2;
-}
-
+/* Contenedor Imagen */
 .product-img-container {
-  height: 220px;
+  height: 240px;
+  /* Alto fijo para uniformidad */
   background-color: var(--image-bg);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .product-img-container img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
-  mix-blend-mode: multiply;
-  /* Para que los fondos blancos de las fotos se fundan */
 }
 
-body.dark-mode .product-img-container img {
-  mix-blend-mode: normal;
-}
-
+/* Contenedor Información */
 .product-info {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* Ocupa el espacio restante */
 }
 
+/* product_name */
 .product-title {
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.1rem;
   margin-bottom: 8px;
+  color: var(--text-primary);
+  line-height: 1.3;
+  /* Truncado a 2 líneas estricto */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
+/* description (Nuevo) */
+.product-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  line-height: 1.5;
+  /* Truncado a 2 líneas sutil */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* distributor_name (Nuevo) */
+.product-distributor {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  display: block;
+}
+
+.distributor-name {
+  font-weight: 600;
+  color: var(--link-color);
+  /* Toque de color Amazon */
+}
+
+/* Fila Inferior (Precio y Botones) */
+.product-price-action-row {
+  margin-top: auto;
+  /* Empuja todo este bloque al fondo de la tarjeta */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+  /* Separación sutil */
+}
+
+/* base_price */
 .product-price-row {
   display: flex;
   align-items: baseline;
-  gap: 10px;
-  margin-bottom: 15px;
 }
 
 .price-current {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 800;
+  color: var(--text-primary);
 }
 
-.price-old {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  text-decoration: line-through;
-}
-
+/* Acciones */
 .product-actions {
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 .btn-add-cart {
-  flex-grow: 1;
   background-color: var(--amz-orange);
   color: #111;
   border: none;
-  border-radius: 6px;
-  padding: 10px;
-  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-weight: 700;
   cursor: pointer;
   transition: background-color 0.2s;
+  font-size: 0.9rem;
 }
 
 .btn-add-cart:hover {
@@ -353,14 +396,22 @@ body.dark-mode .product-img-container img {
 }
 
 .btn-icon {
-  width: 40px;
-  background-color: var(--bg-main);
+  width: 38px;
+  height: 38px;
+  background-color: transparent;
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+}
+
+.btn-icon:hover {
+  background-color: var(--image-bg);
+  border-color: var(--text-secondary);
   color: var(--text-primary);
 }
 
