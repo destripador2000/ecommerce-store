@@ -1,0 +1,141 @@
+.amz-register-card {
+  width: 100%;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 20px 26px;
+  margin-bottom: 25px;
+}
+
+.amz-register-card h1 {
+  font-size: 28px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.amz-required-text {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.amz-register-card label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.amz-input {
+  width: 100%;
+  height: 31px;
+  padding: 3px 7px;
+  margin-bottom: 15px;
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 3px;
+  color: var(--text-main);
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.amz-input:focus {
+  outline: none;
+  border-color: var(--input-focus-border);
+  box-shadow: 0 0 3px 2px var(--input-focus-shadow);
+}
+
+/* Caja de información de contraseña */
+.password-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  margin-top: -10px;
+  /* Sube la info para pegarla al input */
+  margin-bottom: 15px;
+}
+
+.password-info svg {
+  color: var(--info-icon-color);
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+}
+
+/* Botón y Divisor */
+.amz-btn-primary {
+  width: 100%;
+  background-color: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  border-radius: 8px;
+  color: #111;
+  padding: 8px;
+  font-size: 13px;
+  font-weight: normal;
+  cursor: pointer;
+  box-shadow: 0 2px 5px 0 rgba(213, 217, 217, .5);
+  margin-bottom: 15px;
+}
+
+.amz-btn-primary:hover {
+  background-color: var(--btn-hover-bg);
+}
+
+body.dark-mode .amz-btn-primary {
+  box-shadow: none;
+}
+
+.amz-divider {
+  height: 1px;
+  background-color: var(--divider-color);
+  margin: 20px 0;
+}
+
+/* Textos inferiores */
+.login-redirect {
+  font-size: 13px;
+  margin-bottom: 15px;
+}
+
+.login-redirect span {
+  font-weight: 700;
+}
+
+.amz-legal-text {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Botón flotante para cambiar el tema */
+.theme-switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  z-index: 100;
+}
+
+.theme-switch svg {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-sun {
+  display: none;
+}
+
+body.dark-mode .icon-sun {
+  display: block;
+}
+
+body.dark-mode .icon-moon {
+  display: none;
+}

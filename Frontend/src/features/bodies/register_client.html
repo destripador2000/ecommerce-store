@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Amazon Clone</title>
+  <link rel="stylesheet" href="../../themes.css">
+  <link rel="stylesheet" href="../styles/register_client.css">
+  <script type="module" , src="../actions/register_client.ts"></script>
+</head>
+
+<body>
+  <button id="theme-toggle" class="theme-switch" aria-label="Cambiar tema">
+    <svg class="icon-moon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+    </svg>
+    <svg class="icon-sun" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round"
+        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+      </path>
+    </svg>
+  </button>
+
+  <div class="amz-auth-wrapper">
+    <img src="/logo2.png" alt="Amazon" class="amz-logo">
+
+    <div class="amz-register-card">
+      <h1>Crear cuenta</h1>
+      <span class="amz-required-text">Todos los campos son obligatorios</span>
+
+      <form id="register-form">
+        <label for="email">Introduce el número de teléfono móvil o el correo electrónico</label>
+        <input type="text" id="email" class="amz-input" required>
+
+        <label for="name">Nombre</label>
+        <input type="text" id="name" class="amz-input" placeholder="Nombre y apellido" required>
+
+        <label for="password">Contraseña (al menos 6 caracteres)</label>
+        <input type="password" id="password" class="amz-input" required>
+
+        <div class="password-info">
+          <svg fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z">
+            </path>
+          </svg>
+          <span>La contraseña debe tener 6 caracteres como mínimo.</span>
+        </div>
+
+        <label for="password-confirm">Confirma tu contraseña</label>
+        <input type="password" id="password-confirm" class="amz-input" required>
+
+        <button type="submit" class="amz-btn-primary">Continuar</button>
+      </form>
+
+      <div class="amz-divider"></div>
+
+      <div class="login-redirect">
+        <span>¿Ya eres cliente?</span>
+        <a href="../../../index.html">Iniciar sesión en su lugar</a>
+      </div>
+
+      <p class="amz-legal-text">
+        Al crear una cuenta, aceptas las <a href="#">Condiciones de uso y venta</a> de Amazon. Consulta el <a
+          href="#">Aviso de privacidad</a>, el <a href="#">Aviso de cookies</a> y el <a href="#">Aviso de anuncios
+          basados en intereses</a>.
+      </p>
+    </div>
+  </div>
+
+  <footer class="amz-footer">
+    <div class="amz-footer-divider"></div>
+    <div class="amz-footer-links">
+      <a href="#">Condiciones de uso</a>
+      <a href="#">Aviso de privacidad</a>
+      <a href="#">Ayuda</a>
+      <a href="#">Cookies</a>
+      <a href="#">Publicidad basada en intereses</a>
+    </div>
+    <p class="amz-copyright">© 2026, AmazonClone.com</p>
+  </footer>
+</body>
+
+</html>
